@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart';
+
 void main() {
   runApp(const CardMatching());
+}
+class CardModel with ChangeNotifier{
+  final String frontDesign;
+  final String rearDesign;
+  bool isFaceup;
+
+  CardModel({
+    required this.frontDesign,
+    required this.rearDesign,
+    this.isFaceup = false,
+  });
+
+  void flipState() {
+    isFaceup = !isFaceup;
+    notifyListeners();
+  }
 }
 
 class CardMatching extends StatelessWidget {
